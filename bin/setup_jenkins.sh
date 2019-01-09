@@ -27,16 +27,11 @@ items:
     name: "tasks-pipeline"
   spec:
     source:
-      type: "Git"
       git:
         uri: ${REPO}
     strategy:
       jenkinsPipelineStrategy:
-        jenkinsfilePath: openshift-tasks/Jenkinsfile
-      type: JenkinsPipeline
-
-kind: List
-metadata: []" | oc create -f - -n ${GUID}-jenkins
+        jenkinsfilePath: openshift-tasks/Jenkinsfile" | oc create -f - -n ${GUID}-jenkins
 
 # Make sure that Jenkins is fully up and running before proceeding!
 while : ; do
