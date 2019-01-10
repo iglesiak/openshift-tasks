@@ -32,9 +32,17 @@ items:
     strategy:
       jenkinsPipelineStrategy:
         jenkinsfilePath: openshift-tasks/Jenkinsfile
+        env:
+        - name: "GUID"
+          value: ${GUID}
+        - name: "REPO"
+          value: ${REPO}
+        - name: "CLUSTER"
+          value: ${CLUSTER}
       type: JenkinsPipeline
 kind: List
-metadata: []" | oc create -f - -n ${GUID}-jenkins
+metadata: []
+env: []" | oc create -f - -n ${GUID}-jenkins
 
 # Make sure that Jenkins is fully up and running before proceeding!
 while : ; do
